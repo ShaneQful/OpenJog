@@ -14,14 +14,14 @@ $(function () {
         return workout;
     }
 
-    function displayTime(time){
+    function displayTime(time) {
         var seconds, minutes;
         minutes = Math.floor(time / 60);
         seconds = time % 60;
         if (seconds.toString().length === 1) {
             seconds = "0" + seconds;
         }
-        return  minutes + ':' + seconds;
+        return minutes + ':' + seconds;
     }
 
     function openWorkout(workoutname) {
@@ -70,7 +70,7 @@ $(function () {
             clock = true;
             $('#clock-button').parent().children('span').text('Stop');
             clockInterval = setInterval(function () {
-                clocktime +=1;
+                clocktime += 1;
                 $('#workoutpage-clock').html(displayTime(clocktime));
             }, 1000);
         }
