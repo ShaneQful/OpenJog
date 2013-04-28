@@ -1,7 +1,7 @@
 var $, workouts;
 $(function () {
     'use strict';
-    var clock, clockInterval;
+    var clock, clocktime, clockInterval;
 
     function getWorkoutByName(workoutname) {
         var workout;
@@ -12,6 +12,30 @@ $(function () {
             }
         });
         return workout;
+    }
+
+    function displayTime(time){
+        var seconds, minutes;
+        minutes = Math.floor(time / 60);
+        seconds = time % 60;
+        if (seconds.toString().length === 1) {
+            seconds = "0" + seconds;
+        }
+        return  minutes + ':' + seconds;
+    }
+
+    function openWorkout(workoutname) {
+        var workout, instructions;
+        workout = getWorkoutByName(workoutname);
+        if ($.isEmptyObject(workout)) {
+            workout = getWorkoutByName(workoutname.slice(0, workoutname.length - 1));
+        }
+        $('#workoutpage-name').html(workout.name);
+        instructions = "";
+        $(workout.instructions).each(function () {
+            instructions += '<h3>' + this.todo + ' for ' + displayTime(this.time) + '</h3>';
+        });
+        $('#workoutpage-content').html(instructions);
     }
 
     function renderWorkoutList() {
@@ -25,27 +49,30 @@ $(function () {
         });
         $('#workout-list').html(workoutlist);
         $('#workout-list').listview('refresh');
-        $('#workout-list').each(function () {
-            if (!this.hasClass('ui-li-divider')) {
-                this.onclick(function () {
-                    getWorkoutByName(this.name);
+        $('#workout-list').children().each(function () {
+            var that = this;
+            if (!$(this).hasClass('ui-li-divider')) {
+                $(this).click(function () {
+                    openWorkout($(this).text());
                 });
             }
         });
     }
-
-    function openWorkout(workoutname) {
-        var workout, instructions;
-        workout = getWorkoutByName(workoutname);
-        $('#workoutpage-name').html(workout.name);
-        $(workout.instructions).each(function () {
-            var seconds, minutes;
-            minutes = this.time / 60;
-            seconds = this.time % 60;
-            instructions += '<h3>' + this.todo + ' for ' + minutes + ':';
-            instructions += seconds + '</h3>';
-        });
-        $('#workoutpage-content').html();
-    }
     renderWorkoutList();
+    clock = false;
+    clocktime = 0;
+    $('#clock-button').click(function () {
+        if (clock) {
+            clock = false;
+            $('#clock-button').parent().children('span').text('Start');
+            clearInterval(clockInterval);
+        } else {
+            clock = true;
+            $('#clock-button').parent().children('span').text('Stop');
+            clockInterval = setInterval(function () {
+                clocktime +=1;
+                $('#workoutpage-clock').html(displayTime(clocktime));
+            }, 1000);
+        }
+    });
 });
