@@ -33,9 +33,14 @@ $(function () {
         $('#workoutpage-name').html(workout.name);
         instructions = "";
         $(workout.instructions).each(function () {
-            instructions += '<h3>' + this.todo + ' for ' + displayTime(this.time) + '</h3>';
+            instructions += '<li data-theme="c">' + this.todo + ' for ' + displayTime(this.time) + '</li>';
         });
-        $('#workoutpage-content').html(instructions);
+        $('#todo-list').html(instructions);
+        try {
+            $('#todo-list').listview('refresh');
+        } catch (err) {
+            console.log('Refreshed List');
+        }
     }
 
     function renderWorkoutList() {
