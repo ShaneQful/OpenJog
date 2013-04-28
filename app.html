@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="jquery/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <script src="jquery/jquery-1.7.2.min.js">
+        </script>
+        <script src="jquery/jquery.mobile-1.2.0.min.js">
+        </script>
+        <script src="workouts.js">
+        </script>
+        <script src="my.js">
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="e" data-role="header">
+                <h3>
+                    Open Jog App
+                </h3>
+            </div>
+            <div data-role="content">
+                <div data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+                    <img src="runner4.svg" class="center" alt="image" width="100px">
+                </div>
+                <ul data-role="listview" id="workout-list" data-divider-theme="e" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Pick a training session:
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Workout Page -->
+        <div data-role="page" id="workoutpage">
+            <div data-theme="e" data-role="header">
+                <a href="#page1" data-icon="back" data-transition="slide">Back</a>
+                <h3 id="workoutpage-name">
+                    Open Jog App
+                </h3>
+            </div>
+            <div data-role="content" id="workoutpage-content">
+                
+            </div>
+        </div>
+    </body>
+</html>
