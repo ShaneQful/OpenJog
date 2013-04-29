@@ -1,7 +1,7 @@
 var $, workouts;
 $(function () {
     'use strict';
-    var clock, clocktime, clockInterval;
+    var clock, clocktime, clockInterval, nextTodo, currenWorkout, doneSoFar;
 
     function getWorkoutByName(workoutname) {
         var workout;
@@ -30,6 +30,7 @@ $(function () {
         if ($.isEmptyObject(workout)) {
             workout = getWorkoutByName(workoutname.slice(0, workoutname.length - 1));
         }
+        currenWorkout = workout;
         $('#workoutpage-name').html(workout.name);
         instructions = "";
         $(workout.instructions).each(function () {
@@ -37,6 +38,7 @@ $(function () {
         });
         $('#todo-list').html(instructions);
         try {
+            $($('#todo-list').children()[0]).addClass('ui-btn-up-e');
             $('#todo-list').listview('refresh');
         } catch (err) {
             console.log('Refreshed List');
@@ -63,9 +65,12 @@ $(function () {
             }
         });
     }
+
     renderWorkoutList();
     clock = false;
     clocktime = 0;
+    doneSoFar = 0;
+    nextTodo = 0;
     $('#clock-button').click(function () {
         if (clock) {
             clock = false;
@@ -77,6 +82,12 @@ $(function () {
             clockInterval = setInterval(function () {
                 clocktime += 1;
                 $('#workoutpage-clock').html(displayTime(clocktime));
+                if (clocktime === doneSoFar + currenWorkout.instructions[nextTodo].time) {
+                    doneSoFar += currenWorkout.instructions[nextTodo].time;
+                    $($('#todo-list').children()[nextTodo]).hide();
+                    nextTodo += 1;
+                    $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
+                }
             }, 1000);
         }
     });
