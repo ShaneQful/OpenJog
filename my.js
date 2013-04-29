@@ -82,11 +82,16 @@ $(function () {
             clockInterval = setInterval(function () {
                 clocktime += 1;
                 $('#workoutpage-clock').html(displayTime(clocktime));
-                if (clocktime === doneSoFar + currenWorkout.instructions[nextTodo].time) {
-                    doneSoFar += currenWorkout.instructions[nextTodo].time;
-                    $($('#todo-list').children()[nextTodo]).hide();
-                    nextTodo += 1;
-                    $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
+                if (currenWorkout.instructions.length !== nextTodo) {
+                    if (clocktime === doneSoFar + currenWorkout.instructions[nextTodo].time) {
+                        doneSoFar += currenWorkout.instructions[nextTodo].time;
+                        $($('#todo-list').children()[nextTodo]).hide();
+                        nextTodo += 1;
+                        $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
+                    }
+                } else {
+                    $("#lnkDialog").click();
+                    clearInterval(clockInterval);
                 }
             }, 1000);
         }

@@ -46,6 +46,7 @@
                 </h3>
             </div>
             <div data-role="content">
+                <a id='lnkDialog' href="#dialog" data-rel="dialog" data-transition="pop" style='display:none;'></a>
                 <div data-role="controlgroup" data-type="horizontal" style="text-align:center;">
                     <h3 id="workoutpage-clock">
                         0:00
@@ -56,6 +57,21 @@
             <div data-role="content">
                     <ul data-role="listview" id="todo-list" data-divider-theme="e" >
                     </ul>
+            </div>
+        </div>
+        <!-- Dialog Page -->
+        <div data-role="page" id="dialog">
+            <div data-theme="e" data-role="header">
+                <h3 id="dialog-name">
+                    Open Jog
+                </h3>
+            </div>
+            <div data-role="content">
+                <div data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+                    <h3 id="dialog-clock">
+                        Congratulations you have completed your workout.
+                    </h3>
+                </div>
             </div>
         </div>
     </body>
