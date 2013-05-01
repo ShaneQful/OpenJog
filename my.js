@@ -34,7 +34,8 @@ $(function () {
         $('#workoutpage-name').html(workout.name);
         instructions = "";
         $(workout.instructions).each(function () {
-            instructions += '<li data-theme="c">' + this.todo + ' for ' + displayTime(this.time) + '</li>';
+            instructions += '<li data-theme="c">' + this.todo + ' for ';
+            instructions += displayTime(this.time) + '</li>';
         });
         $('#todo-list').html(instructions);
         try {
@@ -88,6 +89,7 @@ $(function () {
                         $($('#todo-list').children()[nextTodo]).hide();
                         nextTodo += 1;
                         $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
+                        $('#audioplayer')[0].play();
                     }
                 } else {
                     $("#lnkDialog").click();

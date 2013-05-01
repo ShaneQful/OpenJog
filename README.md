@@ -11,3 +11,11 @@ http://shaneqful.github.io/OpenJog/app.html
 * This software is MIT licensed see link for details
 
 * http://www.opensource.org/licenses/MIT
+
+#### Alert.mp3
+
+* This is taken from an awesome band's, Silence is Sexy, track Hurt.
+
+* It's licensed [Creative Commons : Attribution - Non-Commercial - Share-Alike](http://creativecommons.org/licenses/by-nc-sa/2.0/).
+
+* I have taken 5 seconds from around the start of the track but otherwise not modified it in anyway.
