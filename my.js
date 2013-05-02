@@ -67,12 +67,39 @@ $(function () {
         });
     }
 
-    renderWorkoutList();
-    clock = false;
-    clocktime = 0;
-    doneSoFar = 0;
-    nextTodo = 0;
-    $('#clock-button').click(function () {
+    function resetValues() {
+        clock = false;
+        clocktime = 0;
+        doneSoFar = 0;
+        nextTodo = 0;
+        $('#todo-list').html('');
+        $('#clock-button').parent().children('span').text('Start');
+        $('#workoutpage-clock').html(displayTime(clocktime));
+    }
+
+    function clockTick() {
+        var dialogContent;
+        clocktime += 1;
+        $('#workoutpage-clock').html(displayTime(clocktime));
+        if (currenWorkout.instructions.length !== nextTodo) {
+            if (clocktime === doneSoFar + currenWorkout.instructions[nextTodo].time) {
+                doneSoFar += currenWorkout.instructions[nextTodo].time;
+                $($('#todo-list').children()[nextTodo]).hide();
+                nextTodo += 1;
+                $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
+                $('#audioplayer')[0].play();
+            }
+        } else {
+            $('#lnkDialog').click();
+            clearInterval(clockInterval);
+            dialogContent = 'Congratulations you have completed your workout.';
+            dialogContent += '<br />in<br />' + displayTime(clocktime-1);
+            $('#dialog-content').html(dialogContent);
+            resetValues();
+        }
+    }
+
+    function startClock() {
         if (clock) {
             clock = false;
             $('#clock-button').parent().children('span').text('Start');
@@ -80,22 +107,11 @@ $(function () {
         } else {
             clock = true;
             $('#clock-button').parent().children('span').text('Stop');
-            clockInterval = setInterval(function () {
-                clocktime += 1;
-                $('#workoutpage-clock').html(displayTime(clocktime));
-                if (currenWorkout.instructions.length !== nextTodo) {
-                    if (clocktime === doneSoFar + currenWorkout.instructions[nextTodo].time) {
-                        doneSoFar += currenWorkout.instructions[nextTodo].time;
-                        $($('#todo-list').children()[nextTodo]).hide();
-                        nextTodo += 1;
-                        $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
-                        $('#audioplayer')[0].play();
-                    }
-                } else {
-                    $("#lnkDialog").click();
-                    clearInterval(clockInterval);
-                }
-            }, 1000);
+            clockInterval = setInterval(clockTick, 1000);
         }
-    });
+    }
+
+    renderWorkoutList();
+    resetValues();
+    $('#clock-button').click(startClock);
 });
