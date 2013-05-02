@@ -93,7 +93,7 @@ $(function () {
             $('#lnkDialog').click();
             clearInterval(clockInterval);
             dialogContent = 'Congratulations you have completed your workout.';
-            dialogContent += '<br />in<br />' + displayTime(clocktime-1);
+            dialogContent += '<br />in<br />' + displayTime(clocktime - 1);
             $('#dialog-content').html(dialogContent);
             resetValues();
         }
