@@ -22,6 +22,7 @@
         <!-- Home -->
         <div data-role="page" id="page1">
             <div data-theme="e" data-role="header">
+                <a href="#optionspage" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Options</a>
                 <h3>
                     Open Jog App
                 </h3>
@@ -30,6 +31,7 @@
                 <div data-role="controlgroup" data-type="horizontal" style="text-align:center;">
                     <img src="images/runner4.png" alt="image" width="100px">
                 </div>
+                <!--<a href="#optionspage" data-role="button">Settings</a>-->
                 <audio id="audioplayer" style="display:none;">
                   <source src="Alert.mp3" type="audio/mpeg">
                   <source src="Alert.ogg" type="audio/ogg">
@@ -62,6 +64,22 @@
             <div data-role="content">
                     <ul data-role="listview" id="todo-list" data-divider-theme="e" >
                     </ul>
+            </div>
+        </div>
+        <!-- Options Page -->
+        <div data-role="page" id="optionspage">
+            <div data-theme="e" data-role="header">
+                <a href="#page1" data-icon="back" data-transition="slide">Back</a>
+                <h3>
+                    Options
+                </h3>
+            </div>
+            <div data-role="content">
+                <label for="flip-alert">Alert Noise:</label>
+                <select name="flip-alert" id="flip-alert" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
             </div>
         </div>
         <!-- Dialog Page -->

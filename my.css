@@ -4,10 +4,10 @@
     margin:0 auto;
     diplay: block;
 }
-.ui-btn-active {
+/*.ui-btn-active {
     border: 1px solid #f4c63f /*{e-bup-border}*/;
-    background: #fadb4e /*{e-bup-background-color}*/;
-    font-weight: bold;
+/*    background: #fadb4e /*{e-bup-background-color}*/;
+/*    font-weight: bold;
     color: #222 /*{e-bup-color}*/;
-    text-shadow: 0 /*{e-bup-shadow-x}*/ 1px /*{e-bup-shadow-y}*/ 0 /*{e-bup-shadow-radius}*/ #fff /*{e-bup-shadow-color}*/;
-}
+/*    text-shadow: 0 1px 0 #fff;
+}*/
