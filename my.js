@@ -1,3 +1,4 @@
+/*jslint browser: true, devel: true */
 var $, workouts;
 $(function () {
     'use strict';
@@ -58,7 +59,6 @@ $(function () {
         $('#workout-list').html(workoutlist);
         $('#workout-list').listview('refresh');
         $('#workout-list').children().each(function () {
-            var that = this;
             if (!$(this).hasClass('ui-li-divider')) {
                 $(this).click(function () {
                     openWorkout($(this).text());
@@ -111,6 +111,17 @@ $(function () {
         }
     }
 
+    function setLocalStorageData() {
+        if ($(localStorage.inUse).isEmptyObject()) {
+            //Set defaults
+            localStorage.inUse = 'true';
+            localStorage.sounds = 'true';
+            //People may have privacy concerns if on by default
+            localStorage.tracking = 'false';
+        }
+    }
+
+    setLocalStorageData();
     renderWorkoutList();
     resetValues();
     $('#clock-button').click(startClock);
