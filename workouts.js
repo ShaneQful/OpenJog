@@ -34,7 +34,7 @@ var workouts = [{
         {todo:"Walk", time:120},
     ]},{
     name:"Workout 3", instructions:[
-        {todo:"Warm up walk", time:300}
+        {todo:"Warm up walk", time:300},
         {todo:"Jog", time:90},
         {todo:"Walk", time:90},
         {todo:"Jog", time:180},
