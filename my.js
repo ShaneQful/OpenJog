@@ -1,4 +1,5 @@
 /*jslint browser: true, devel: true */
+//Predefined global variables
 var $, workouts;
 $(function () {
     'use strict';
@@ -87,7 +88,9 @@ $(function () {
                 $($('#todo-list').children()[nextTodo]).hide();
                 nextTodo += 1;
                 $($('#todo-list').children()[nextTodo]).addClass('ui-btn-up-e');
-                $('#audioplayer')[0].play();
+                if (localStorage.sounds === 'true') {
+                    $('#audioplayer')[0].play();
+                }
             }
         } else {
             $('#lnkDialog').click();
@@ -112,12 +115,17 @@ $(function () {
     }
 
     function setLocalStorageData() {
-        if ($(localStorage.inUse).isEmptyObject()) {
+        if ($.isEmptyObject(localStorage.inUse)) {
             //Set defaults
             localStorage.inUse = 'true';
             localStorage.sounds = 'true';
             //People may have privacy concerns if on by default
             localStorage.tracking = 'false';
+        }
+        if (localStorage.sounds === 'true') {
+            $('#flip-alert').val('on');
+        } else {
+            $('#flip-alert').val('off');
         }
     }
 
@@ -125,4 +133,15 @@ $(function () {
     renderWorkoutList();
     resetValues();
     $('#clock-button').click(startClock);
+    //May be a better idea to simply store all user configs in JSON form
+    //and parse and store them when neccessary rtaher than have to use string
+    //varibles for uses which they were not designed for.
+    $('flip-alert').change(function () {
+        console.log('Are there major tom?');
+        if (localStorage.sounds !== 'true') {
+            localStorage.sounds = 'true';
+        } else {
+            localStorage.sounds = 'false';
+        }
+    });
 });
