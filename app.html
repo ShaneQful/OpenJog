@@ -47,10 +47,11 @@
         <!-- Workout Page -->
         <div data-role="page" id="workoutpage">
             <div data-theme="e" data-role="header">
-                <a href="#page1" data-icon="back" data-transition="slide">Back</a>
+                <a href="#page1" data-icon="delete" id="quitworkout" data-transition="slide">Quit Workout</a>
                 <h3 id="workoutpage-name">
                     Open Jog App
                 </h3>
+                <a href="#optionspage" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Options</a>
             </div>
             <div data-role="content">
                 <a id='lnkDialog' href="#dialog" data-rel="dialog" data-transition="pop" style='display:none;'></a>
@@ -69,7 +70,7 @@
         <!-- Options Page -->
         <div data-role="page" id="optionspage">
             <div data-theme="e" data-role="header">
-                <a href="#page1" data-icon="back" data-transition="slide">Back</a>
+                <a href="javascript:history.go(-1)" data-icon="back" data-transition="slide">Back</a>
                 <h3>
                     Options
                 </h3>

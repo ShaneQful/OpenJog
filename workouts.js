@@ -43,5 +43,25 @@ var workouts = [{
         {todo:"Walk", time:90},
         {todo:"Jog", time:180},
         {todo:"Walk", time:180},
+    ]},{
+    name:"The Scientific 7-Minute Workout", instructions:[
+        {todo:"Jumping Jacks", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Wall Sit", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Push Ups", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Abdominal Crunchs", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Step on to chair", time:30},
+        {todo:"Plank", time:30},
+        {todo:"Rest", time:10},
+        {todo:"High knees running in place", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Lunge", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Push up Roatation", time:30},
+        {todo:"Rest", time:10},
+        {todo:"Sideways Plank", time:30},
     ]}
 ];

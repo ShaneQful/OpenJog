@@ -132,12 +132,15 @@ $(function () {
     setLocalStorageData();
     renderWorkoutList();
     resetValues();
+    $('#quitworkout').click(function () {
+        clearInterval(clockInterval);
+        resetValues();
+    });
     $('#clock-button').click(startClock);
     //May be a better idea to simply store all user configs in JSON form
     //and parse and store them when neccessary rtaher than have to use string
     //varibles for uses which they were not designed for.
-    $('flip-alert').change(function () {
-        console.log('Are there major tom?');
+    $('#flip-alert').change(function () {
         if (localStorage.sounds !== 'true') {
             localStorage.sounds = 'true';
         } else {
