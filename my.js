@@ -114,6 +114,9 @@ $(function () {
         }
     }
 
+    //May be a better idea to simply store all user configs in JSON form
+    //and parse and store them when neccessary rather than have to use string
+    //varibles for uses which they were not designed for.
     function setLocalStorageData() {
         if ($.isEmptyObject(localStorage.inUse)) {
             //Set defaults
@@ -127,24 +130,34 @@ $(function () {
         } else {
             $('#flip-alert').val('off');
         }
+        if (localStorage.tracking === 'true') {
+            $('#flip-tracking').val('on');
+        } else {
+            $('#flip-tracking').val('off');
+        }
     }
 
+    function flipLocalStorageBool(bool) {
+        if (localStorage[bool] !== 'true') {
+            localStorage[bool] = 'true';
+        } else {
+            localStorage[bool] = 'false';
+        }
+    }
     setLocalStorageData();
     renderWorkoutList();
     resetValues();
+
+    //Listeners
     $('#quitworkout').click(function () {
         clearInterval(clockInterval);
         resetValues();
     });
     $('#clock-button').click(startClock);
-    //May be a better idea to simply store all user configs in JSON form
-    //and parse and store them when neccessary rtaher than have to use string
-    //varibles for uses which they were not designed for.
     $('#flip-alert').change(function () {
-        if (localStorage.sounds !== 'true') {
-            localStorage.sounds = 'true';
-        } else {
-            localStorage.sounds = 'false';
-        }
+        flipLocalStorageBool('sounds');
+    });
+    $('#flip-track').change(function () {
+        flipLocalStorageBool('tracking');
     });
 });

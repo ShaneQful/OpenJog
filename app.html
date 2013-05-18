@@ -47,7 +47,7 @@
         <!-- Workout Page -->
         <div data-role="page" id="workoutpage">
             <div data-theme="e" data-role="header">
-                <a href="#page1" data-icon="delete" id="quitworkout" data-transition="slide">Quit Workout</a>
+                <a href="#page1" data-icon="delete" id="quitworkout" data-transition="slide">Finish</a>
                 <h3 id="workoutpage-name">
                     Open Jog App
                 </h3>
@@ -78,6 +78,11 @@
             <div data-role="content">
                 <label for="flip-alert">Alert Noise:</label>
                 <select name="flip-alert" id="flip-alert" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+                <label for="flip-track">Logging Workouts:</label>
+                <select name="flip-track" id="flip-track" data-role="slider">
                     <option value="off">Off</option>
                     <option value="on">On</option>
                 </select>
