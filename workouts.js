@@ -54,6 +54,7 @@ var workouts = [{
         {todo:"Abdominal Crunchs", time:30},
         {todo:"Rest", time:10},
         {todo:"Step on to chair", time:30},
+        {todo:"Rest", time:10},
         {todo:"Plank", time:30},
         {todo:"Rest", time:10},
         {todo:"High knees running in place", time:30},
