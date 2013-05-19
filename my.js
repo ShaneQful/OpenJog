@@ -4,7 +4,7 @@ var $, workouts;
 $(function () {
     'use strict';
     var clock, clocktime, clockInterval, nextTodo, currenWorkout, doneSoFar,
-        firstOpened;
+        firstOpened, finishLogging;
     function getWorkoutByName(workoutname) {
         var workout;
         $(workouts).each(function () {
@@ -83,7 +83,7 @@ $(function () {
     function logWorkout() {
         var loggingInterval, log, now;
         log = {};
-        log.workout = currenWorkout;
+        log.workout = currenWorkout.name;
         now = new Date();
         log.startTime = now.getTime();
         navigator.geolocation.getCurrentPosition(function (geodata) {
@@ -101,7 +101,7 @@ $(function () {
         log.intervals = [];
         loggingInterval = setInterval(function () {
             var record = {};
-            record.activity = 'Current Activity';//e.g. Jogging
+            record.activity = currenWorkout.instructions[nextTodo];//e.g. Jogging
             now = new Date();
             record.time = now.getTime();
             navigator.geolocation.getCurrentPosition(function (geodata) {
@@ -118,7 +118,7 @@ $(function () {
                 };
                 log.intervals.push(record);
             });
-        }, 1000);
+        }, 10000);//Set Magi number in options dialog
         //Return finish loggin function
         return function () {
             clearInterval(loggingInterval);
@@ -148,6 +148,7 @@ $(function () {
             dialogContent = 'Congratulations you have completed your workout.';
             dialogContent += '<br />in<br />' + displayTime(clocktime - 1);
             $('#dialog-content').html(dialogContent);
+            finishLogging();
             resetValues();
         }
     }
@@ -164,7 +165,7 @@ $(function () {
             if (firstOpened) {
                 firstOpened = false;
                 if (localStorage.tracking && localStorage.tracking === 'true') {
-                    logWorkout();
+                    finishLogging = logWorkout();
                 }
             }
         }
@@ -212,6 +213,7 @@ $(function () {
     //Listeners
     $('#quitworkout').click(function () {
         clearInterval(clockInterval);
+        finishLogging();
         resetValues();
     });
     $('#clock-button').click(startClock);
