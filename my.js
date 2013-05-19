@@ -148,7 +148,9 @@ $(function () {
             dialogContent = 'Congratulations you have completed your workout.';
             dialogContent += '<br />in<br />' + displayTime(clocktime - 1);
             $('#dialog-content').html(dialogContent);
-            finishLogging();
+            if (finishLogging) {
+                finishLogging();
+            }
             resetValues();
         }
     }
@@ -213,7 +215,9 @@ $(function () {
     //Listeners
     $('#quitworkout').click(function () {
         clearInterval(clockInterval);
-        finishLogging();
+        if (finishLogging) {
+            finishLogging();
+        }
         resetValues();
     });
     $('#clock-button').click(startClock);
