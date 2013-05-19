@@ -163,7 +163,9 @@ $(function () {
             clockInterval = setInterval(clockTick, 1000);
             if (firstOpened) {
                 firstOpened = false;
-                logWorkout();
+                if (localStorage.tracking && localStorage.tracking === 'true') {
+                    logWorkout();
+                }
             }
         }
     }
@@ -178,6 +180,9 @@ $(function () {
             localStorage.sounds = 'true';
             //People may have privacy concerns if on by default
             localStorage.tracking = 'false';
+            localStorage.logggedWorkouts = '[]';
+        }
+        if ($.isEmptyObject(localStorage.logggedWorkouts)) {
             localStorage.logggedWorkouts = '[]';
         }
         if (localStorage.sounds === 'true') {
