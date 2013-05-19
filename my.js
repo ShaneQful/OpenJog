@@ -4,7 +4,7 @@ var $, workouts;
 $(function () {
     'use strict';
     var clock, clocktime, clockInterval, nextTodo, currenWorkout, doneSoFar,
-        firstOpened, locator;
+        firstOpened;
     function getWorkoutByName(workoutname) {
         var workout;
         $(workouts).each(function () {
@@ -86,10 +86,46 @@ $(function () {
         log.workout = currenWorkout;
         now = new Date();
         log.startTime = now.getTime();
+        navigator.geolocation.getCurrentPosition(function (geodata) {
+            log.location = {
+                available : true,
+                lat : geodata.coords.latitude,
+                long : geodata.coords.longitude,
+                accuracy : geodata.coords.accuracy
+            };
+        }, function () {
+            log.location = {
+                available : false
+            };
+        });
+        log.intervals = [];
         loggingInterval = setInterval(function () {
-            
-        }, 1000); //Fix magic numbers
-        //TODO: Log workout name , time started, geolocation if available
+            var record = {};
+            record.activity = 'Current Activity';//e.g. Jogging
+            now = new Date();
+            record.time = now.getTime();
+            navigator.geolocation.getCurrentPosition(function (geodata) {
+                record.location = {
+                    available : true,
+                    lat : geodata.coords.latitude,
+                    long : geodata.coords.longitude,
+                    accuracy : geodata.coords.accuracy
+                };
+                log.intervals.push(record);
+            }, function () {
+                record.location = {
+                    available : false
+                };
+                log.intervals.push(record);
+            });
+        }, 1000);
+        //Return finish loggin function
+        return function () {
+            clearInterval(loggingInterval);
+            var logs = JSON.parse(localStorage.logggedWorkouts);
+            logs.push(log);
+            localStorage.logggedWorkouts = JSON.stringify(logs);
+        };
     }
 
     function clockTick() {
@@ -142,6 +178,7 @@ $(function () {
             localStorage.sounds = 'true';
             //People may have privacy concerns if on by default
             localStorage.tracking = 'false';
+            localStorage.logggedWorkouts = '[]';
         }
         if (localStorage.sounds === 'true') {
             $('#flip-alert').val('on');
@@ -180,6 +217,7 @@ $(function () {
         flipLocalStorageBool('tracking');
     });
 
+    //Get user to agree to always share location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (geodata) {
             console.log(geodata);
