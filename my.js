@@ -3,8 +3,8 @@
 var $, workouts;
 $(function () {
     'use strict';
-    var clock, clocktime, clockInterval, nextTodo, currenWorkout, doneSoFar;
-
+    var clock, clocktime, clockInterval, nextTodo, currenWorkout, doneSoFar,
+        firstOpened, locator;
     function getWorkoutByName(workoutname) {
         var workout;
         $(workouts).each(function () {
@@ -28,6 +28,7 @@ $(function () {
 
     function openWorkout(workoutname) {
         var workout, instructions;
+        firstOpened = true;
         workout = getWorkoutByName(workoutname);
         if ($.isEmptyObject(workout)) {
             workout = getWorkoutByName(workoutname.slice(0, workoutname.length - 1));
@@ -73,9 +74,22 @@ $(function () {
         clocktime = 0;
         doneSoFar = 0;
         nextTodo = 0;
+        firstOpened = false;
         $('#todo-list').html('');
         $('#clock-button').parent().children('span').text('Start');
         $('#workoutpage-clock').html(displayTime(clocktime));
+    }
+
+    function logWorkout() {
+        var loggingInterval, log, now;
+        log = {};
+        log.workout = currenWorkout;
+        now = new Date();
+        log.startTime = now.getTime();
+        loggingInterval = setInterval(function () {
+            
+        }, 1000); //Fix magic numbers
+        //TODO: Log workout name , time started, geolocation if available
     }
 
     function clockTick() {
@@ -111,6 +125,10 @@ $(function () {
             clock = true;
             $('#clock-button').parent().children('span').text('Stop');
             clockInterval = setInterval(clockTick, 1000);
+            if (firstOpened) {
+                firstOpened = false;
+                logWorkout();
+            }
         }
     }
 
@@ -144,6 +162,7 @@ $(function () {
             localStorage[bool] = 'false';
         }
     }
+
     setLocalStorageData();
     renderWorkoutList();
     resetValues();
@@ -160,4 +179,12 @@ $(function () {
     $('#flip-track').change(function () {
         flipLocalStorageBool('tracking');
     });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (geodata) {
+            console.log(geodata);
+        }, function () {
+            console.log('Geolocation not support or browser has stupid settings(grr, chrome)');
+        });
+    }
 });
