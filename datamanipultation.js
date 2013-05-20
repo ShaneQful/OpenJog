@@ -1,4 +1,6 @@
-//Needs so error checking for unavailable locations
+/*jslint browser: true, devel: true */
+//Predefined global variables
+var $;
 function displayPathString(workout) {
     'use strict';
     var url = 'https://maps.googleapis.com/maps/api/staticmap?path=color:0x0000ff|weight:5|';
@@ -12,8 +14,11 @@ function displayPathString(workout) {
 }
 
 function displayLastWorkOut() {
-    var loggedWorkOuts = JSON.parse(localStorage.logggedWorkouts);
-    var urlString = displayPathString(loggedWorkOuts[loggedWorkOuts.length-1]);
+    'use strict';
+    var urlString, loggedWorkOuts;
+    loggedWorkOuts = JSON.parse(localStorage.logggedWorkouts);
+    urlString = displayPathString(loggedWorkOuts[loggedWorkOuts.length - 1]);
     console.log(urlString);
-    $('#path').attr('src',urlString);
+    $('#path').attr('src', urlString);
 }
+
