@@ -11,7 +11,8 @@ function displayPathString(workout) {
     return url;
 }
 
-$('#aboutPage').bind('pageinit',function (event) {
+function displayLastWorkOut() {
     var urlString = displayPathString(JSON.parse(localStorage.logggedWorkouts)[0]);
+    console.log(urlString);
     $('#path').attr('src',urlString);
-});
+}
