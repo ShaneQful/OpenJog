@@ -10,3 +10,8 @@ function displayPathString(workout) {
     url = encodeURI(url);
     return url;
 }
+
+$('#aboutPage').bind('pageinit',function (event) {
+    var urlString = displayPathString(JSON.parse(localStorage.logggedWorkouts)[0]);
+    $('#path').attr('src',urlString);
+});

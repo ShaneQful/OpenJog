@@ -17,6 +17,8 @@
         </script>
         <script src="my.js">
         </script>
+        <script src="datamanipultation.js">
+        </script>
     </head>
     <body>
         <!-- Home -->
@@ -31,7 +33,7 @@
                 <div data-role="controlgroup" data-type="horizontal" style="text-align:center;">
                     <img src="images/runner4.png" alt="image" width="100px">
                 </div>
-                <!--<a href="#optionspage" data-role="button">Settings</a>-->
+                <a href="#displaydatapage" data-role="button">Previous Workout</a>
                 <audio id="audioplayer" style="display:none;">
                   <source src="Alert.mp3" type="audio/mpeg">
                   <source src="Alert.ogg" type="audio/ogg">
@@ -86,6 +88,18 @@
                     <option value="off">Off</option>
                     <option value="on">On</option>
                 </select>
+            </div>
+        </div>
+        <!-- Previous Workouts Page -->
+        <div data-role="page" id="displaydatapage">
+            <div data-theme="e" data-role="header">
+                <a href="javascript:history.go(-1)" data-icon="back" data-transition="slide">Back</a>
+                <h3>
+                    Previous Workouts
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="" id="path" width="95%">
             </div>
         </div>
         <!-- Dialog Page -->
