@@ -187,6 +187,9 @@ $(function () {
         }
         if ($.isEmptyObject(localStorage.logggedWorkouts)) {
             localStorage.logggedWorkouts = '[]';
+            $('#previousworkout-btn').hide();
+        } else if (localStorage.logggedWorkouts === '[]') {
+            $('#previousworkout-btn').hide();
         }
         if (localStorage.sounds === 'true') {
             $('#flip-alert').val('on');
