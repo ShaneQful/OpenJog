@@ -194,9 +194,9 @@ $(function () {
             $('#flip-alert').val('off');
         }
         if (localStorage.tracking === 'true') {
-            $('#flip-tracking').val('on');
+            $('#flip-track').val('on');
         } else {
-            $('#flip-tracking').val('off');
+            $('#flip-track').val('off');
         }
     }
 
