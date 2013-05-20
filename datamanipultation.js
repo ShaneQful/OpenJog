@@ -12,7 +12,8 @@ function displayPathString(workout) {
 }
 
 function displayLastWorkOut() {
-    var urlString = displayPathString(JSON.parse(localStorage.logggedWorkouts)[0]);
+    var loggedWorkOuts = JSON.parse(localStorage.logggedWorkouts);
+    var urlString = displayPathString(loggedWorkOuts[loggedWorkOuts.length-1]);
     console.log(urlString);
     $('#path').attr('src',urlString);
 }
