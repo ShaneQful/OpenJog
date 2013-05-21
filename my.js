@@ -150,6 +150,7 @@ $(function () {
             $('#dialog-content').html(dialogContent);
             if (finishLogging) {
                 finishLogging();
+                finishLogging = false;//Stop being called twice by finish btn
             }
             resetValues();
         }
