@@ -1,6 +1,6 @@
 /*jslint browser: true, devel: true */
 //Predefined global variables
-var $;
+var $, displayTime;
 function displayPathString(workout) {
     'use strict';
     var url = 'https://maps.googleapis.com/maps/api/staticmap?path=color:0x0000ff|weight:5|';
@@ -18,10 +18,15 @@ function displayPathString(workout) {
 
 function displayLastWorkOut() {
     'use strict';
-    var urlString, loggedWorkOuts;
+    var urlString, loggedWorkOuts, lastWorkout, time, end;
     loggedWorkOuts = JSON.parse(localStorage.logggedWorkouts);
-    urlString = displayPathString(loggedWorkOuts[loggedWorkOuts.length - 1]);
-    console.log(urlString);
+    lastWorkout = loggedWorkOuts[loggedWorkOuts.length - 1];
+    urlString = displayPathString(lastWorkout);
     $('#path').attr('src', urlString);
+    $('#prev-name').text(lastWorkout.workout);
+    end = lastWorkout.intervals[lastWorkout.intervals.length - 1].time;
+    time = (end - lastWorkout.startTime) / 1000;
+    time = parseInt(time, 10);
+    $('#prev-time').text(displayTime(time));
 }
 

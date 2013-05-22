@@ -1,6 +1,18 @@
 /*jslint browser: true, devel: true */
 //Predefined global variables
 var $, workouts;
+
+function displayTime(time) {
+    'use strict';
+    var seconds, minutes;
+    minutes = Math.floor(time / 60);
+    seconds = time % 60;
+    if (seconds.toString().length === 1) {
+        seconds = "0" + seconds;
+    }
+    return minutes + ':' + seconds;
+}
+
 $(function () {
     'use strict';
     var clock, clocktime, clockInterval, nextTodo, currenWorkout, doneSoFar,
@@ -14,16 +26,6 @@ $(function () {
             }
         });
         return workout;
-    }
-
-    function displayTime(time) {
-        var seconds, minutes;
-        minutes = Math.floor(time / 60);
-        seconds = time % 60;
-        if (seconds.toString().length === 1) {
-            seconds = "0" + seconds;
-        }
-        return minutes + ':' + seconds;
     }
 
     function openWorkout(workoutname) {
