@@ -18,7 +18,7 @@ function displayPathString(workout) {
 
 function displayLastWorkOut() {
     'use strict';
-    var urlString, loggedWorkOuts, lastWorkout, time, end;
+    var urlString, loggedWorkOuts, lastWorkout, time, end, date;
     loggedWorkOuts = JSON.parse(localStorage.logggedWorkouts);
     lastWorkout = loggedWorkOuts[loggedWorkOuts.length - 1];
     urlString = displayPathString(lastWorkout);
@@ -28,5 +28,7 @@ function displayLastWorkOut() {
     time = (end - lastWorkout.startTime) / 1000;
     time = parseInt(time, 10);
     $('#prev-time').text(displayTime(time));
+    date = new Date(lastWorkout.startTime);
+    $('#prev-date').text(date.toLocaleDateString());
 }
 
