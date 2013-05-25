@@ -38,7 +38,7 @@
                   <source src="Alert.ogg" type="audio/ogg">
                   Your browser does not support this audio format.
                 </audio>
-                <a href="#displaydatapage" id="previousworkout-btn" data-role="button" onclick="displayLastWorkOut();">Previous Workouts</a>
+                <a href="#displaydatapage" id="previousworkout-btn" data-role="button" onclick="displayWorkOut(-1);">Previous Workouts</a>
                 <ul data-role="listview" id="workout-list" data-divider-theme="e" data-inset="true">
                     <li data-role="list-divider" role="heading">
                         Pick a training session:
@@ -109,9 +109,22 @@
                 </div>
             </div>
             <div data-role="footer" class="ui-grid-b" data-theme="e" data-position="fixed">
-                <div class="ui-block-a"><button href="" data-icon="arrow-l" data-transition="slide">Previous</button></div>
+                <div class="ui-block-a">
+                    <button onclick="displayWorkOut(-1);" data-inline="true"
+                        data-icon="arrow-l" data-transition="slide">
+                        Previous
+                    </button>
+                </div>
                 <div class="ui-block-b" data-type="horizontal" style="text-align:center;"><h3 id="prev-date" >2003-05-67</h3></div>
-                <div class="ui-block-c"><button href="" data-icon="arrow-r" data-iconpos="right" data-transition="slide" >Next</button></div>
+                <div class="ui-block-c">
+                    <div align="right">
+                        <button onclick="displayWorkOut(1);" data-inline="true"
+                            data-icon="arrow-r" data-iconpos="right"
+                            data-transition="slide" >
+                            Next
+                        </button>
+                    </div>
+                </div>
             </div> 
         </div>
         <!-- Dialog Page -->

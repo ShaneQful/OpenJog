@@ -1,6 +1,6 @@
 /*jslint browser: true, devel: true */
 //Predefined global variables
-var $, displayTime;
+var $, displayTime, currentWorkoutIndex;
 function displayPathString(workout) {
     'use strict';
     var url = 'https://maps.googleapis.com/maps/api/staticmap?path=color:0x0000ff|weight:5|';
@@ -16,19 +16,24 @@ function displayPathString(workout) {
     return url;
 }
 
-function displayLastWorkOut() {
+function displayWorkOut(direction) {
     'use strict';
-    var urlString, loggedWorkOuts, lastWorkout, time, end, date;
+    var urlString, loggedWorkOuts, nextWorkout, time, end, date;
     loggedWorkOuts = JSON.parse(localStorage.logggedWorkouts);
-    lastWorkout = loggedWorkOuts[loggedWorkOuts.length - 1];
-    urlString = displayPathString(lastWorkout);
+    if (currentWorkoutIndex) {
+        currentWorkoutIndex += direction;
+    } else {
+        currentWorkoutIndex = loggedWorkOuts.length - 1;
+    }
+    nextWorkout = loggedWorkOuts[currentWorkoutIndex % loggedWorkOuts.length];
+    urlString = displayPathString(nextWorkout);
     $('#path').attr('src', urlString);
-    $('#prev-name').text(lastWorkout.workout);
-    end = lastWorkout.intervals[lastWorkout.intervals.length - 1].time;
-    time = (end - lastWorkout.startTime) / 1000;
+    $('#prev-name').text(nextWorkout.workout);
+    end = nextWorkout.intervals[nextWorkout.intervals.length - 1].time;
+    time = (end - nextWorkout.startTime) / 1000;
     time = parseInt(time, 10);
     $('#prev-time').text(displayTime(time));
-    date = new Date(lastWorkout.startTime);
+    date = new Date(nextWorkout.startTime);
     $('#prev-date').text(date.toLocaleDateString());
 }
 
