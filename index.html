@@ -13,6 +13,8 @@
         </script>
         <script src="jquery/jquery.mobile-1.2.0.min.js">
         </script>
+        <script src="jslibs/base64.js">
+        </script>
         <script src="workouts.js">
         </script>
         <script src="my.js">
@@ -88,6 +90,14 @@
                     <option value="off">Off</option>
                     <option value="on">On</option>
                 </select>
+                <button id="data-ops-btn">Data Options</button>
+                <div id="data-ops-div" style="display:none;">
+                    <a href="" data-role="button" target="_blank" 
+                        id="data-dump">Download Data(JSON)</a>
+<!--                         Needs a little more work -->
+                    <!--<a href="javascript:localStorage.logggedWorkouts = '[]';" 
+                        id="clear-data" data-role="button">Clear Data</a>-->
+                </div>
             </div>
         </div>
         <!-- Previous Workouts Page -->

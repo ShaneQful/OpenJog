@@ -1,6 +1,6 @@
 /*jslint browser: true, devel: true */
 //Predefined global variables
-var $, workouts;
+var $, Base64, workouts;
 
 function displayTime(time) {
     'use strict';
@@ -232,6 +232,11 @@ $(function () {
     });
     $('#flip-track').change(function () {
         flipLocalStorageBool('tracking');
+    });
+    //Probably should do this on options page load
+    $('#data-ops-btn').click(function () {
+        $('#data-ops-div').toggle('drop');
+        $('#data-dump').attr('href', 'data:application/octet-stream;charset=utf-8;base64,' + Base64.encode(localStorage.logggedWorkouts));
     });
 
     //Get user to agree to always share location
