@@ -4,7 +4,7 @@ A HTML mobile application based on jquery mobile. Just a little app, I'm throwin
 
 You can try it out here:
 
-http://shaneqful.github.io/OpenJog/app.html
+http://shaneqful.github.io/OpenJog/
 
 ### License:
 
