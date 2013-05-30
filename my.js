@@ -239,6 +239,11 @@ $(function () {
         $('#data-dump').attr('href', 'data:application/octet-stream;charset=utf-8;base64,' + Base64.encode(localStorage.logggedWorkouts));
     });
 
+    $('#clear-data').click(function () {
+        localStorage.logggedWorkouts = '[]';
+        $('#previousworkout-btn').hide();
+    });
+
     //Get user to agree to always share location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (geodata) {
