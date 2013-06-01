@@ -184,8 +184,7 @@ $(function () {
             //Set defaults
             localStorage.inUse = 'true';
             localStorage.sounds = 'true';
-            //People may have privacy concerns if on by default
-            localStorage.tracking = 'false';
+            localStorage.tracking = 'true';
             localStorage.logggedWorkouts = '[]';
         }
         if ($.isEmptyObject(localStorage.logggedWorkouts)) {
