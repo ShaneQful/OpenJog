@@ -7,6 +7,11 @@
 
     <!-- versionCode is optional and Android only -->
 
+    <icon src="icon.png" />
+    <icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
+    <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+    <icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+
     <name>Open Jog</name>
 
     <description>
