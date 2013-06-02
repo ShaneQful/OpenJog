@@ -6,6 +6,10 @@ You can try it out here:
 
 http://shaneqful.github.io/OpenJog/
 
+or you can donwload it for you favorite mobile OS here:
+
+https://build.phonegap.com/apps/422586/share
+
 ### License:
 
 * This software is MIT licensed see link for details
