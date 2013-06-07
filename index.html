@@ -136,6 +136,27 @@
                 </div>
             </div> 
         </div>
+        <!-- Add Workout Page -->
+        <div data-role="page" id="addworkoutpage">
+            <div data-theme="e" data-role="header">
+                <a href="javascript:history.go(-1)" data-icon="back" data-transition="slide">Back</a>
+                <h3>
+                    Add Workout
+                </h3>
+            </div>
+            <div data-role="content">
+                <input type="text" name="name" id="workoutname" value="Workout Name">
+                <div>
+                    <h3>
+                        Add Activity:
+                    </h3>
+                    <input style="" type="text" name="name" id="activity" value="Jog">
+                    <label for="slider-1">Seconds:</label><br/>
+                    <input type="range" name="slider-1" id="activity-seconds" value="60" min="0" max="500" />
+                    <button>Add</button>
+                </div>
+            </div>
+        </div>
         <!-- Dialog Page -->
         <div data-role="page" id="dialog">
             <div data-theme="e" data-role="header">
