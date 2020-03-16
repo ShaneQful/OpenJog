@@ -92,7 +92,7 @@ var workouts = [{
         {todo:"Rest", time:10},
         {todo:"Lunge", time:30},
         {todo:"Rest", time:10},
-        {todo:"Push up Roatation", time:30},
+        {todo:"Mountain Climbers", time:30},
         {todo:"Rest", time:10},
         {todo:"Squats", time:30},
         {todo:"Rest", time:90},
@@ -114,7 +114,7 @@ var workouts = [{
         {todo:"Rest", time:10},
         {todo:"Lunge", time:30},
         {todo:"Rest", time:10},
-        {todo:"Push up Roatation", time:30},
+        {todo:"Mountain Climbers", time:30},
         {todo:"Rest", time:10},
         {todo:"Squats", time:30}
     ]}
