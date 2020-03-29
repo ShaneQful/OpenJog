@@ -117,5 +117,28 @@ var workouts = [{
         {todo:"Mountain Climbers", time:30},
         {todo:"Rest", time:10},
         {todo:"Squats", time:30}
+    ]},{
+    name:"Rugbybricks Passing Drill", instructions:[
+        {todo:"Pitta Patter", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Round the back right", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Round the back left", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Figure 8 between legs", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Round the legs step back right", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Round the legs step back left", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Pass between the legs", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Pistol Up right hand", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Pistol Up left hand", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Both hands straight up right hand", time:50},
+        {todo:"Rest", time:10},
+        {todo:"Both hands straight up left hand", time:50}
     ]}
 ];
